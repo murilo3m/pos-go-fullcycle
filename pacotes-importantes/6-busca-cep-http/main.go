@@ -42,6 +42,13 @@ func BuscaCepHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	//Caso desejassemos verificar se foi possível realizer o parse do Json
+	/*result, err := json.Marshal(cep)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}*/
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(cep)
