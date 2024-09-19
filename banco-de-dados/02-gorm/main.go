@@ -95,8 +95,8 @@ func main() {
 	p.Name = "New A"
 	db.Save(&p)*/
 
-	var p Product
+	/*var p Product
 	db.First(&p, 5)
-	db.Delete(&p)
+	db.Delete(&p)*/
 
 }
