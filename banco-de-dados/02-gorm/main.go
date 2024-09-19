@@ -18,7 +18,9 @@ func main() {
 		panic(err)
 	}
 	db.AutoMigrate(&Product{})
-	db.Create(&Product{
+
+	//Insert
+	/*db.Create(&Product{
 		Name:  "notebook",
 		Price: 100.00,
 	})
@@ -28,5 +30,57 @@ func main() {
 		{Name: "teclado", Price: 200.00},
 	}
 
-	db.Create(&products)
+	db.Create(&products)*/
+
+	//Select - Específico
+	/*var product Product
+	db.First(&product, 1)
+	fmt.Println(product)
+
+	db.First(&product, "name = ?", "mouse")
+	fmt.Println(product)*/
+
+	//Select - Sem where
+	/*var products []Product
+	db.Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}*/
+
+	//Select - Com offset
+	/*var products []Product
+	db.Limit(2).Offset(0).Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}*/
+
+	//Select - Where
+	/*var products []Product
+	db.Where("price > ?", 100).Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}*/
+
+	//Select - Where (Like)
+	/*var products []Product
+	db.Where("name LIKE ?", "%book%").Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}*/
+
+	//Update
+	/*var p Product
+	db.First(&p, 1)
+	p.Name = "New Mouse"
+	db.Save(&p)
+
+	var p2 Product
+	db.First(&p2, 1)
+	fmt.Println(p2.Name)*/
+
+	//Delete
+	var p Product
+	db.First(&p, 1)
+	db.Delete(&p)
+
 }
