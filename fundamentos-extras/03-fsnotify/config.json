@@ -1,6 +1,0 @@
-{
-    "db": "postgres",
-    "host": "localhost",
-    "user": "root",
-    "password" : "root"
-}
