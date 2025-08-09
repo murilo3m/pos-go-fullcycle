@@ -1,0 +1,8 @@
+FROM mysql:5.7
+
+# Copia o script de entrypoint para o container
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Define o entrypoint personalizado
+ENTRYPOINT ["/entrypoint.sh"]
