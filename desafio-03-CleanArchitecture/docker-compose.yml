@@ -1,0 +1,59 @@
+version: "2.2"
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: orders
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/configs/sql/000001_init.up.sql:/docker-entrypoint-initdb.d/000001_init.up.sql
+    networks:
+      - my_network
+    healthcheck:
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - my_network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    ports:
+      - 8080:8080
+      - 8000:8000
+      - 50051:50051
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "
+      echo 'Starting application...';
+      go run main.go wire_gen.go
+      "
+    networks:
+      - my_network
+
+networks:
+  my_network:
