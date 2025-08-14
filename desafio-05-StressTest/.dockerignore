@@ -1,0 +1,6 @@
+.git
+.gitignore
+.devcontainer
+Dockerfile
+.dockerignore
+README.md

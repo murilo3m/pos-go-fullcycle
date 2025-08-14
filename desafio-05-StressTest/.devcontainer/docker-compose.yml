@@ -1,0 +1,19 @@
+services:
+  cli:
+    image: golang:1.23.6
+    volumes:
+      # - ../cmd:/workspaces/cmd
+      # - ../internal:/workspaces/internal
+      # - ../test:/workspaces/test
+      # - ../.env:/workspaces/.env
+      # - ../go.mod:/workspaces/go.mod
+      # - ../go.sum:/workspaces/go.sum
+      # - ../ratelimiter_test.http:/workspaces/ratelimiter_test.http
+      - ../:/workspaces
+    working_dir: /workspaces
+    command: sleep infinity
+    networks:
+      - my_network
+
+networks:
+  my_network:

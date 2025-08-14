@@ -1,0 +1,14 @@
+{
+	"name": "Go",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "cli",
+	"workspaceFolder": "/workspaces",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go",
+				"humao.rest-client"
+			]
+		}
+	}
+}
