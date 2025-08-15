@@ -1,0 +1,1 @@
+GET http://localhost:8080/temperatureByCEP?cep=13720616

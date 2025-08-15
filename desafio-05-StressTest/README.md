@@ -1,4 +1,4 @@
-# Desafio 8 - Pós Go Lang - Full Cycle
+# Desafio - Pós Go Lang - Full Cycle
 
 ## Objetivo
 

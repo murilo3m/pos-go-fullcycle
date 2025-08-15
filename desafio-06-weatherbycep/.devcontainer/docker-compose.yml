@@ -1,0 +1,14 @@
+version: "2.2"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    networks:
+      - my_network
+networks:
+  my_network:
